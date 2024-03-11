@@ -113,6 +113,6 @@ if __name__ == '__main__':
     mymodel.p1.register_forward_hook(farward_hook)
     mymodel.p1.register_backward_hook(backward_hook)
 
-    cam=get_cam(imgpath='test.jpg', mode='L',transform=transform,mymodel=mymodel)
+    cam=get_cam(imgpath='test.png', mode='L',transform=transform,mymodel=mymodel)
     plt.imshow(cam)
     plt.show()
