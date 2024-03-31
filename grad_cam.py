@@ -8,9 +8,10 @@ from model import Model
 from torchvision import transforms as T
 
 ### 流程
+# 入口是main函数
 
-# 1. 获得梯度图和特征图
-# 2. 梯度图全局平均池化获得加权权重，按通道特征图和特征图加权求和
+# 1. 使用pytorch的hook机制获得梯度图和特征图
+# 2. 梯度图全局平均池化获得加权权重，按通道维度将特征图和特征图加权求和
 
 def get_model(check_point):
 
@@ -109,7 +110,8 @@ if __name__ == '__main__':
     grad_block = []
     feature_block = []
 
-    # hook函数，勾选要显示的模块，一般是最后一个卷积层，设置正向传播自动调用farward_hook,反向... *
+    # hook函数，勾选要显示的模块(这里勾选的是LeNet的self.p1),一般是最后一个卷积块的pooling层(卷积作为自动特征提取器获得优良特征供mlp进行分类)
+    # 设置正向传播自动调用farward_hook,反向自动调用backward_hook *
     mymodel.p1.register_forward_hook(farward_hook)
     mymodel.p1.register_backward_hook(backward_hook)
 
