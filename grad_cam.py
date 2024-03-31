@@ -49,6 +49,8 @@ def backward_hook(module, grad_in, grad_out):
     ## grad_out : 模块的梯度
 
     ## 梯度图全局平均获得加权权重
+    ### grad_out-＞[1,C,H,W]
+    ### weight->[1,C,H,W]
     weight = F.adaptive_max_pool2d(grad_out[0], 1)
     grad_block.append(weight[0].detach())
 
