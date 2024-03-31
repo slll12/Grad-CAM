@@ -11,7 +11,7 @@ from torchvision import transforms as T
 # 入口是main函数
 
 # 1. 使用pytorch的hook机制获得梯度图和特征图
-# 2. 梯度图全局平均池化获得加权权重，按通道维度将特征图和特征图加权求和
+# 2. 梯度图全局平均池化获得加权权重，按通道维度将得到权重对特征图进行加权求和
 
 def get_model(check_point):
 
