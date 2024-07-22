@@ -116,6 +116,7 @@ if __name__ == '__main__':
 
     # hook函数，勾选要显示的模块(这里勾选的是LeNet的self.p1),一般是最后一个卷积块的pooling层(卷积作为自动特征提取器获得优良特征供mlp进行分类)
     # 设置正向传播自动调用farward_hook,反向自动调用backward_hook *
+    # hook作用：获取勾选模块处理后的特征图和梯度图
     mymodel.p1.register_forward_hook(farward_hook)
     mymodel.p1.register_backward_hook(backward_hook)
 
