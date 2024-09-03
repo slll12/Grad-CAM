@@ -120,6 +120,7 @@ if __name__ == '__main__':
     mymodel.p1.register_forward_hook(farward_hook)
     mymodel.p1.register_backward_hook(backward_hook)
 
+    # 测试图片路径，图片模式['L','RGB']，数据增强方式，实例化模型
     cam=get_cam(imgpath='test.png', mode='L',transform=transform,mymodel=mymodel)
     plt.imshow(cam)
     plt.show()
