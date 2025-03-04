@@ -1,4 +1,4 @@
-# @Author  : slll12
+# @Author  : slll12(裤裤的鱼)
 
 import torch
 import cv2
@@ -79,6 +79,7 @@ def get_cam(imgpath, mymodel, transform,mode='RGB'):
 
     mymodel.zero_grad()
 
+    # 预测类别激活（可直接更改为标签值）
     max_idx = np.argmax(output.cpu().data.numpy())
     class_loss = output[0,max_idx]
     class_loss.backward()
